@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // JSONP实现原理:
+      // 1.定义一个function 回调函数  callback
+      // 2.通过script标签的src属性，请求一个接口，这个接口能够返回一个函数的调用，至于它要调用一个什么样的函数，我们用查询字符串的方式，来告诉服务器； 例如：callback=success
+      // 3.服务器根据它传过去的这个函数名，返回一个函数的调用，函数调用的形式，接收跨域接口响应回来的数据。
+
+      function success(data) {
+        console.log("JSONP响应回来的数据是:");
+        console.log(data);
+      }
+    </script>
+    <!-- callback 是查询参数 -->
+    <script src="http://ajax.frontend.itheima.net:3006/api/jsonp?callback=success&name=zs&age=20"></script>
+
+    <!-- <script src="getdata.js?callback=success"></script> -->
+  </body>
+</html>
